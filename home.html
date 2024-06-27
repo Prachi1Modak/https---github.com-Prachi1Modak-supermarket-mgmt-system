@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Home Page</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="css/home.css">
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<link rel="stylesheet" href="./booking_form/fonts/material-icon/css/material-design-iconic-font.min.css">
+<link rel="stylesheet" href="./booking_form/vendor/nouislider/nouislider.min.css">
+<!-- BILLING FORM -->
+<link rel="stylesheet" href="./booking_form/css/style.css">
+
+
+
+
+<body>
+  
+  <div class="wrapper">
+  
+  <!-- Navbar -->
+  <div class="w3-top">
+    <div class="w3-bar w3-theme w3-top w3-left-align w3-large">
+      <!-- <a class="w3-bar-item w3-button w3-right hide-bars w3-hover-white w3-large w3-theme-l1" href="javascript:void(0)" onclick="w3_open()"><i class="fa fa-bars"></i></a> -->
+      <a href="#" class="w3-bar-item w3-button w3-theme-l1">Super Market</a>
+      <a href="#" class="w3-bar-item w3-button w3-hover-white billing-tab nav-tab active">Billing</a>
+      <a href="#" class="w3-bar-item w3-button w3-hover-white admin-tab nav-tab">Admin</a>
+      <a href="#" class="w3-bar-item w3-button w3-hover-white profile-tab nav-tab">Profile</a>
+      
+      <a href="#" class="w3-bar-item w3-button w3-hover-white logoutbtn">Logout</a>
+      <a class="w3-bar-item w3-hide-small nav-name">Name</a>
+    </div>
+  </div>
+  
+  <!-- Sidebar-->
+    <nav class="w3-sidebar w3-bar-block w3-large w3-theme-l5 w3-animate-left" id="menubar">
+    <!-- <a href="javascript:void(0)" onclick="w3_close()" class="w3-right w3-xlarge w3-padding-large w3-hover-black w3-hide-large" title="Close Menu">
+        <i class="fa fa-remove"></i>
+      </a> -->
+      <h4 class="w3-bar-item"><b>Menu</b></h4>
+      <a class="w3-bar-item w3-button w3-hover-black manage-menu sidenav-tab" href="#">Manage</a>
+      <a class="w3-bar-item w3-button w3-hover-black addemp-menu sidenav-tab" href="#">Add Employee</a>
+      <a class="w3-bar-item w3-button w3-hover-black inventory-menu sidenav-tab" href="#">Inventory</a>
+      <a class="w3-bar-item w3-button w3-hover-black sales-menu sidenav-tab" href="#">Sales</a>
+      <a class="w3-bar-item w3-button w3-hover-black sales-trends-menu sidenav-tab" href="#">Sales Trends Report</a>
+    </nav>
+
+  <!-- Sales Trends Report Page -->
+  <div class="w3-main sales-trends-page" style="margin-left:100px;margin-right:100px;display:none;">
+    <h1 style="text-align: center;">Sales Trends Report</h1>
+    <div class="sales-trends-form">
+        <label for="start_date" style="text-align: center;">Start Date:</label>
+        <input type="date" id="start_date" style="position: relative; top:10px;">
+        <label for="end_date" style="text-align: center; position:relative; top: 25px;">End Date:</label>
+        <input type="date" id="end_date" style="position: relative; top: 30px;">
+        <div style="align-content: center; position: relative; top:65px; left:90px;">
+        <button onclick="generateSalesTrendsReport()" class="w3-button w3-theme-d1">Generate Report</button>
+      </div>
+    </div>
+    <div id="sales-report-output">
+        <!-- The sales report will be displayed here -->
+        <p class="placeholder">Sales report will be displayed here.</p>
+    </div>
+</div>
+
+    
+    <!-- Main content: shift it to the right by 250 pixels when the sidebar is visible -->
+    <div class="w3-main maincontainer" style="margin-left:100px;margin-right:100px">
+      
+      <!-- Admin division -->
+      <div class='divisions admindiv' id="Admin">
+        <!-- <h1>This is the admin page</h1> -->
+        <div class='admindivisions managediv'>
+          <p class="emplistlabel">Employees at </p>
+          <table class="employeetable">
+            <tr>
+              <th>Emp No</th>
+              <th>Name</th>
+              <th>email</th>
+              <th>Job Title</th>
+              <th>Phone Number</th>
+            </tr> 
+          </table>
+
+        </div>
+        <div class='admindivisions addempdiv'>
+          <!-- <p>Add Employee</p> -->
+          <div class="login100-form validate-form">
+              <span class="login100-form-title">
+                Hire Employee
+              </span>
+              
+              <div class="wrap-input100 validate-input" data-validate = "Enter Valid Name">
+                <input class="input100 fnameinput" type="text" name="name" placeholder="First Name">
+                <span class="focus-input100"></span>
+                <span class="symbol-input100"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+              </div>
+              <div class="wrap-input100 validate-input" data-validate = "Enter Valid Name">
+                  <input class="input100 lnameinput" type="text" name="name" placeholder="Last Name">
+                  <span class="focus-input100"></span>
+                  <span class="symbol-input100"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                </div>
+              <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+                <input class="input100 emailinput" type="text" name="email" placeholder="Email">
+                <span class="focus-input100"></span>
+                <span class="symbol-input100"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+              </div>
+              <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+                <input class="input100 streetinput addressinput" type="text" name="street" placeholder="Street">
+                <span class="focus-input100"></span>
+                <span class="symbol-input100"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+              </div>
+              <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+                <input class="input100 cityinput addressinput" type="text" name="city" placeholder="City">
+                <span class="focus-input100"></span>
+                <span class="symbol-input100"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+              </div>
+              <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+                <input class="input100 stateinput addressinput" type="text" name="state" placeholder="State">
+                <span class="focus-input100"></span>
+                <span class="symbol-input100"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+              </div>
+              <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+                <input class="input100 stateinput jobinput" type="text" name="jobTitle" placeholder="Job Title">
+                <span class="focus-input100"></span>
+                <span class="symbol-input100"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+              </div>
+              <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+                <input class="input100 stateinput salaryinput" type="text" name="salary" placeholder="Salary">
+                <span class="focus-input100"></span>
+                <span class="symbol-input100"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+              </div>
+              <div class="wrap-input100 validate-input" data-validate = "Enter Valid Mobile number">
+                <input class="input100 phnoinput" type="text" name="number" placeholder="Phone Number">
+                <span class="focus-input100"></span>
+                <span class="symbol-input100"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+              </div>
+              
+              <div class="wrap-input100 validate-input" data-validate = "Password is required">
+                <input class="input100 passwordinput" type="password" name="pass" placeholder="Password">
+                <span class="focus-input100"></span>
+                <span class="symbol-input100">
+                  <i class="fa fa-lock" aria-hidden="true"></i>
+                </span>
+              </div>
+              
+              <div class="container-login100-form-btn">
+                <button class="login100-form-btn addempbtn">
+                  Add
+                </button>
+              </div>
+          </div>
+        </div>
+        <!-- Inventory div -->
+        <div class='admindivisions inventorydiv'>
+          <table class='inventorytable' value="asdas">
+
+          </table>
+        </div>
+        <div class='admindivisions salesdiv'>
+          <table class='salestable' value="asdas">
+
+          </table>
+        </div>
+        
+        <!-- Admin Division End -->
+      </div>
+
+      <!-- Billing division -->
+        <div class='divisions billingdiv main' id="Billing">
+          <!-- <h1>This is the Billing page</h1> -->
+          
+
+          <!-- <div class="main"> -->
+              <div class="container">
+                  <div class="signup-content">
+                      <div class="signup-img">
+                          <!-- <img src="http://odisisoftware.com/images/bill.jpg" alt=""> -->
+                          <input type="button" name="refresh" class="refresh">
+                          <table id="table">
+                              <tr>
+                                &emsp;&emsp; Product Name &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                                Quantity &nbsp;&nbsp;
+                                Price &nbsp;&nbsp;
+                              </tr>
+                              <hr style="border:1px solid">
+
+                          </table>
+                          <div class="listdiv"><p class="productlist"></div>
+                          <div class="signup-img-content">
+                              <!-- <h2> Table Goes Here </h2> -->
+                              <div>
+                                  <div>
+                                      <div class="form-input">
+                                          <label for="Total Amount " >Total Amount </label>
+                                          <input type="text" name="total_amount" id="total_amount" readonly/>
+                                      </div>
+                                  </div>
+                              </div>
+                            
+                          </div>
+                      </div>
+                      <div class="signup-form">
+                          <div class="register-form" id="register-form">
+                              <div class="form-row">
+                                  <div class="form-group">
+                                      <div class="form-input">
+                                          <label for="customer_name" class="required">Customer Name</label>
+                                          <input type="text" name="first_name" id="customer_name" />
+                                        </div>
+                                      <div class="form-input">
+                                          <label for="phone_number" class="required">Phone number</label>
+                                          <input type="text" name="phone_number" id="phone_number" />
+                                      </div>
+                                      <div class="form-input">
+                                          <label for="search" class="required">Product Name</label>
+                                          <input type="text" name="search" id="productnuminput" list="itemdatalist" />
+                                          <datalist id="itemdatalist">
+                                          </datalist>
+                                      </div>
+                                      <div class="form-input">
+                                          <label for="quantity" class="required">Quantity</label>
+                                          <input type="text" name="quantity" id="quantityinput" />
+                                      </div>
+                                      <div class="paybtndiv form-submit" style="display:inline-block; ">
+                                        <input type="submit" value="Pay" class="pay submit" id="submit" name="submit" />
+                                    </div>
+                                       <div class="form-submit"  style="display:inline-block;">
+                                          <input type="submit" value="Add To Cart" class="product submit" id="submit" name="submit" />
+                                       </div>
+                                      
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+      
+          <!-- </div> -->
+          
+          <!-- Billing Division End -->
+        </div>
+
+      <!-- Profile Division -->
+        <div class="divisions profilediv" id="Profile">
+          <h1>This is the profile page</h1>
+
+          <div class="w3-container profile-container">
+            <p class="empdetail firstname">First Name :</p>
+            <p class="empdetail lastname">Last Name  :</p>
+            <p class="empdetail address">Address    :</p>
+            <p class="empdetail salary">Salary     :</p>
+            <p class="empdetail jobtitle">Job Title:</p>
+            <p class="empdetail phone">Phone num  :</p>
+
+          </div>
+    
+          <!-- Profile Division End   -->
+        </div>
+
+      <!-- END MAIN -->
+    </div>
+  </div>
+  
+  
+  <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+  
+    <script src="js/sales.js"></script>
+      <script src="./js/homeinit.js"></script>
+      
+      <script>
+        // Get the Sidebar
+        var mySidebar = document.getElementById("mySidebar");
+        
+        // Get the DIV with overlay effect
+        var overlayBg = document.getElementById("myOverlay");
+        
+        // Toggle between showing and hiding the sidebar, and add overlay effect
+        function w3_open() {
+          if (mySidebar.style.display === 'block') {
+            mySidebar.style.display = 'none';
+            overlayBg.style.display = "none";
+          } else {
+            mySidebar.style.display = 'block';
+            overlayBg.style.display = "block";
+          }
+        }
+        
+        // Close the sidebar with the close button
+        function w3_close() {
+          mySidebar.style.display = "none";
+          overlayBg.style.display = "none";
+        }
+        </script>
+
+<script src="js/home.js"></script>
+<script src="js/addemp.js"></script>
+<script src="./booking_form/vendor/jquery/jquery.min.js"></script>
+<script src="./booking_form/vendor/nouislider/nouislider.min.js"></script>
+<script src="./booking_form/vendor/wnumb/wNumb.js"></script>
+<script src="./booking_form/vendor/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="./booking_form/vendor/jquery-validation/dist/additional-methods.min.js"></script>
+<script src="./booking_form/js/billingform.js"></script>
+<script src="./booking_form/js/payment.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function(){
+      // Handle click event for menu items
+      $(".nav-tab").click(function(){
+          // Hide other pages
+          $(".w3-main").hide();
+          // Show the corresponding page
+          var tab = $(this).attr('class').split(' ')[2]; // Get the class name
+          $("." + tab + "div").show();
+      });
+
+      // Handle click event for Sales Trends Report menu
+      $(".sales-trends-menu").click(function(){
+          // Hide other pages
+          $(".w3-main").hide();
+          // Show Sales Trends Report page
+          $(".sales-trends-page").show();
+      });
+  });
+
+  // JavaScript function to generate sales trends report
+  function generateSalesTrendsReport() {
+
+   
+      var startDate = document.getElementById("start_date").value;
+      var endDate = document.getElementById("end_date").value;
+
+      var startDate = formatDate(startDate);
+  var endDate = formatDate(endDate);
+
+      console.log("Start Date:", startDate);
+    console.log("End Date:", endDate);
+
+      // AJAX call to the server to fetch the sales trends report
+      $.ajax({
+          url: '/generateSalesTrendsReport', // Change the URL to your server-side script
+          type: 'POST',
+          data: {
+              start_date: startDate,
+              end_date: endDate
+          },
+          success: function(response) {
+              // Check if the response is empty or not
+              if (typeof response === 'string' && response.trim() !== "") {
+                  // Update the sales report output div with the fetched report
+                  $("#sales-report-output").html(response);
+              } else {
+                  alert('No data available for the selected period.');
+              }
+          },
+          error: function(xhr, status, error) {
+              console.error(xhr.responseText);
+              alert('Error occurred while generating the report. Please check the console for more information.');
+          }
+      });
+      function formatDate(date) {
+    const d = new Date(date);
+    const year = d.getFullYear();
+    const month = (d.getMonth() + 1).toString().padStart(2, '0');
+    const day = d.getDate().toString().padStart(2, '0');
+    return `${year}-${month}-${day}`;
+}
+  }
+</script> 
+<!-- <script src="salesReport.js"></script> -->
+
+</body>
+</html>
+
+
+
+
+
